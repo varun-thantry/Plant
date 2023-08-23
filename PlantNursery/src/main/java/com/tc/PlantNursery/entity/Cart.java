@@ -21,9 +21,9 @@ import java.util.List;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cid;
+    private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="uid")
     private User user;
 

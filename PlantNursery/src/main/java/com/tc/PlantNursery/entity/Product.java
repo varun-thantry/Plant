@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pid;
+    private Long id;
 
     private String productName;
 

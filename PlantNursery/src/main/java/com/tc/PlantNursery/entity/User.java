@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uid;
+    private Long id;
 
     private String userName;
 

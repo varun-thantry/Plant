@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Query {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long qid;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "uid")   // user id of role customer

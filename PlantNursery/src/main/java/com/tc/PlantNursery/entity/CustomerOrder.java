@@ -22,7 +22,7 @@ import java.util.List;
 public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long oid;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "uid")
