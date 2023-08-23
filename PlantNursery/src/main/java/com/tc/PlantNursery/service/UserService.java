@@ -19,7 +19,6 @@ public class UserService {
         // if the user does not exist
         if (foundUser == null) {
 
-
             return null;
         }
         else

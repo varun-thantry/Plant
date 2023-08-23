@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface CartRepo extends JpaRepository<Cart,Long> {
 
-    @Query("SELECT c FROM Cart c WHERE c.user.id = :uid") 
+    @Query("SELECT c FROM Cart c WHERE c.user.id = :uid")
     List<Cart> getCartByUserId(Long uid);
     @Modifying
     @Transactional
