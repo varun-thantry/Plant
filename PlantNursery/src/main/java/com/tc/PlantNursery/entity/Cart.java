@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+
 
 import java.util.List;
 
@@ -16,8 +15,6 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "Cart")
-@DynamicInsert
-@DynamicUpdate
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

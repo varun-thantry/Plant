@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,8 +16,6 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "CustomerOrder")
-@DynamicInsert
-@DynamicUpdate
 public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

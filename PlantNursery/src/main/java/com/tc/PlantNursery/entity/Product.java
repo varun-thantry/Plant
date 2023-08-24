@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+
 
 @Data
 @AllArgsConstructor
@@ -14,8 +13,6 @@ import org.hibernate.annotations.DynamicUpdate;
 @ToString
 @Entity
 @Table(name = "Product")
-@DynamicInsert
-@DynamicUpdate
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
