@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepo extends JpaRepository<User,Long> {
 
@@ -13,4 +15,6 @@ public interface UserRepo extends JpaRepository<User,Long> {
     User findByEmail(String email);
 
     User findByEmailAndPassword(String email, String password);
+
+    List<User> findByRole(String role);
 }
