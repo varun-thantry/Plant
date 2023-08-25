@@ -3,6 +3,7 @@ package com.tc.PlantNursery.controller;
 import com.tc.PlantNursery.entity.Cart;
 import com.tc.PlantNursery.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,13 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping("/customer/addToCart")
-    public Cart addToCart(@RequestBody Cart cart){
-        return cartService.saveCart(cart);
+    public ResponseEntity<?> addToCart(@RequestBody Cart cart) {
+        Cart savedCart = cartService.saveCart(cart);
+        if (savedCart != null) {
+            return ResponseEntity.ok(savedCart);
+        } else {
+            return ResponseEntity.badRequest().body("Cart contains the product already");
+        }
     }
 
     @GetMapping("/customer/getFromCart/{uid}")

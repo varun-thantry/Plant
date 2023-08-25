@@ -15,6 +15,12 @@ public class CartService {
     private CartRepo cartRepo;
 
     public Cart saveCart(Cart cart){
+        Long uid = cart.getUser().getId();
+        Long pid = cart.getProduct().getId();
+        if (cartRepo.findByUserAndProduct(uid, pid) != null) {
+            // Product is already in the cart, return the existing cart
+            return null;
+        }
         return cartRepo.save(cart);
     }
 

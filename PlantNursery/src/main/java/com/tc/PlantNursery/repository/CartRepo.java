@@ -18,4 +18,9 @@ public interface CartRepo extends JpaRepository<Cart,Long> {
     @Transactional
     @Query(value = "DELETE FROM cart WHERE uid = :uid AND pid = :pid", nativeQuery = true)
     void deleteByUserAndProduct(Long uid, Long pid);
+
+    @Query(value = "SELECT * FROM cart WHERE uid = :uid AND pid = :pid", nativeQuery = true)
+    Cart findByUserAndProduct(Long uid, Long pid);
+
+
 }
