@@ -28,4 +28,6 @@ public class Cart {
     @JoinColumn(name="pid")
     private Product product;
 
+    private Long quantity;
+
 }
