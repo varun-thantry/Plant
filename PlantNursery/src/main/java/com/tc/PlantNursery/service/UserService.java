@@ -1,7 +1,9 @@
 package com.tc.PlantNursery.service;
 
-import com.tc.PlantNursery.DTO.RegisteredStaffResponse;
+import com.tc.PlantNursery.Dto.RegisteredStaffResponse;
+import com.tc.PlantNursery.entity.Product;
 import com.tc.PlantNursery.entity.User;
+import com.tc.PlantNursery.repository.ProductRepo;
 import com.tc.PlantNursery.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ import java.util.Random;
 public class UserService {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private ProductRepo productRepo;
 
     //User register
 
@@ -103,5 +108,36 @@ public class UserService {
     }
 
 
+    /*--------------------Nursery Staff part---------------------------*/
 
+    public boolean resetPassword(Long userId, String newPassword) {
+        String hashedPassword = hashPassword(newPassword);
+        User user = userRepo.findById(userId).orElse(null);
+
+        if (user != null) {
+            user.setPassword(hashedPassword);
+            userRepo.save(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean updateProduct(Long productId, Double price , Boolean stockStatus){
+        Product product = productRepo.findById(productId).orElse(null);
+
+        if(product != null){
+            product.setPrice(price);
+            product.setStockStatus(stockStatus);
+            productRepo.save(product);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public Product addProduct(Product product) {
+        return productRepo.save(product);
+    }
 }

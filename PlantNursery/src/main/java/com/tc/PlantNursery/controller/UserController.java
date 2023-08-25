@@ -1,7 +1,8 @@
 package com.tc.PlantNursery.controller;
 
-import com.tc.PlantNursery.DTO.LoginResponseDto;
-import com.tc.PlantNursery.DTO.RegisteredStaffResponse;
+import com.tc.PlantNursery.Dto.LoginResponseDto;
+import com.tc.PlantNursery.Dto.RegisteredStaffResponse;
+import com.tc.PlantNursery.entity.Product;
 import com.tc.PlantNursery.entity.User;
 import com.tc.PlantNursery.repository.UserRepo;
 import com.tc.PlantNursery.service.UserService;
@@ -85,4 +86,42 @@ public class UserController {
         javaMailSender.send(simpleMailMessage);
         return "credentials sent successfully to "+ staff.getEmail();
     }
+
+
+    /*-------------------Nursery staff controllers----------------------*/
+    @PatchMapping("/staff/resetPassword")
+    public ResponseEntity<String> resetPassword(@RequestBody User user) {
+        if (user == null || user.getId() == null || user.getPassword() == null) {
+            return ResponseEntity.badRequest().body("User ID and new password are required.");
+        }
+
+        boolean success = userService.resetPassword(user.getId(), user.getPassword());
+
+        if (success) {
+            return ResponseEntity.ok("Password reset successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to reset password.");
+        }
+    }
+
+    @PostMapping("/staff/addProduct")
+    public Product addProduct(@RequestBody Product product){
+        return userService.addProduct(product);
+    }
+
+    @PatchMapping("/staff/updateProduct")
+    public ResponseEntity<String> updateProduct(@RequestBody Product product){
+        if(product == null || product.getId() == null || product.getPrice() == null || product.getStockStatus() == null ){
+            return ResponseEntity.badRequest().body("Product,price and status required");
+        }
+        boolean success = userService.updateProduct(product.getId(), product.getPrice(), product.getStockStatus());
+
+        if (success) {
+            return ResponseEntity.ok("Updated the product successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to update the product");
+        }
+    }
+
+
 }
