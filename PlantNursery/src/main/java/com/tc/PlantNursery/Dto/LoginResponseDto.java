@@ -1,4 +1,4 @@
-package com.tc.PlantNursery.DTO;
+package com.tc.PlantNursery.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
