@@ -29,6 +29,12 @@ public class CustomerOrder {
     @JoinColumn(name = "pid")
     private Product product;
 
+    private Long quantity;
+
+    private String type;
+
+    private OrderStatus orderStatus;
+
     private LocalDateTime DateAndTime;
 
     private String address;
