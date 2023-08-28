@@ -1,5 +1,5 @@
 package com.tc.PlantNursery.entity;
 
 public enum OrderStatus {
-    PROCESSING,IN_TRANSIT,DELIVERED;
+    PROCESSING,IN_TRANSIT,DELIVERED,COMPLETED;
 }

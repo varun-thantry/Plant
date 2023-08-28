@@ -24,5 +24,5 @@ public interface CartRepo extends JpaRepository<Cart,Long> {
 
 
     void deleteByUserId(Long uid);
-    
+
 }
