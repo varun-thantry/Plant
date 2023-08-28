@@ -26,6 +26,14 @@ public class Product {
 
     private Boolean stockStatus;
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    private Double rating;
+
+
+
 
 
 
