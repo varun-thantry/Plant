@@ -15,4 +15,8 @@ public class CustomerOrderService {
     public List<CustomerOrder> saveOrder(List<CustomerOrder> customerOrders){
         return customerOrderRepo.saveAll(customerOrders);
     }
+
+    public List<CustomerOrder> showUserOrders(Long uid){
+        return customerOrderRepo.findByUser_Id(uid);
+    }
 }
