@@ -32,7 +32,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Query> queries = new ArrayList<>();
+    private List<Queries> queries = new ArrayList<>();
 
 
 }
