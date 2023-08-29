@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "Query")
-public class Query {
+public class Queries {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,6 +1,6 @@
 package com.tc.PlantNursery.service;
 
-import com.tc.PlantNursery.entity.Query;
+import com.tc.PlantNursery.entity.Queries;
 import com.tc.PlantNursery.entity.User;
 import com.tc.PlantNursery.repository.QueryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +16,28 @@ public class QueryService {
     private QueryRepo queryRepository;
 
     public void postQuery(User user, String queryDesc) {
-        Query query = new Query();
+        Queries query = new Queries();
         query.setUser(user);
         query.setQueryDesc(queryDesc);
         query.setQueryStatus(false); // Assuming it's initially not answered
         queryRepository.save(query);
     }
 
-    public List<Query> getAllQueries() {
+    public List<Queries> getAllQueries() {
         return queryRepository.findAll();
     }
 
     public void answerQuery(Long queryId, String answer) {
-        Optional<Query> optionalQuery = queryRepository.findById(queryId);
+        Optional<Queries> optionalQuery = queryRepository.findById(queryId);
         if (optionalQuery.isPresent()) {
-            Query query = optionalQuery.get();
+            Queries query = optionalQuery.get();
             query.setQueryAnswer(answer);
             query.setQueryStatus(true); // Mark as answered
             queryRepository.save(query);
         }
+    }
+
+    public List<Queries> getUserQueries(Long uid) {
+        return queryRepository.findByUserId(uid);
     }
 }
