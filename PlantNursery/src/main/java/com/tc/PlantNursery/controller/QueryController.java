@@ -37,6 +37,16 @@ public class QueryController {
 
     }
 
+    @GetMapping("/getAllQueries/true")
+    public List<Queries> getAllTrueQueries() {
+        return queryService.getAllQueriesByStatus(true);
+    }
+
+    @GetMapping("/getAllQueries/false")
+    public List<Queries> getAllFalseQueries() {
+        return queryService.getAllQueriesByStatus(false);
+    }
+
     @PostMapping("/staff/answer")
     public ResponseEntity<String> answerQuery(@RequestBody Queries answerRequest) {
         queryService.answerQuery(answerRequest.getId(), answerRequest.getQueryAnswer());// id of query to be given in json
@@ -46,5 +56,15 @@ public class QueryController {
     @GetMapping("/customer/getUserQueries/{uid}")
     public List<Queries> getUserQueries(@PathVariable Long uid){
         return queryService.getUserQueries(uid);
+    }
+
+    @GetMapping("/customer/getUserQueries/true/{userId}")
+    public List<Queries> getAllTrueQueriesForUser(@PathVariable Long userId) {
+        return queryService.getAllQueriesByStatusForUser(userId, true);
+    }
+
+    @GetMapping("/customer/getUserQueries/false/{userId}")
+    public List<Queries> getAllFalseQueriesForUser(@PathVariable Long userId) {
+        return queryService.getAllQueriesByStatusForUser(userId, false);
     }
 }
