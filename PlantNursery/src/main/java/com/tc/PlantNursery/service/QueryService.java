@@ -27,6 +27,10 @@ public class QueryService {
         return queryRepository.findAll();
     }
 
+    public List<Queries> getAllQueriesByStatus(Boolean queryStatus) {
+        return queryRepository.findByQueryStatus(queryStatus);
+    }
+
     public void answerQuery(Long queryId, String answer) {
         Optional<Queries> optionalQuery = queryRepository.findById(queryId);
         if (optionalQuery.isPresent()) {
@@ -39,5 +43,9 @@ public class QueryService {
 
     public List<Queries> getUserQueries(Long uid) {
         return queryRepository.findByUserId(uid);
+    }
+
+    public List<Queries> getAllQueriesByStatusForUser(Long userId, Boolean queryStatus) {
+        return queryRepository.findByUserIdAndQueryStatus(userId, queryStatus);
     }
 }
